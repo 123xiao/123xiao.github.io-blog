@@ -6,28 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://123xiao.github.io/blog">
-  <title>阿里巴巴Java开发规约插件-体验 | 无名键客</title>
+  <title>记一次对公司网络限制的突破记录 | 无名键客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="插件有哪些功能？ 阿里技术公众号于今年的2月9日首次公布《阿里巴巴Java开发规约》，瞬间引起全民代码规范的热潮，上月底又发布了PDF的终极版，大家踊跃留言，期待配套的静态扫描工具开放出来。  为了让开发者更加方便、快速将规范推动并实行起来，阿里巴巴基于手册内容，研发了一套自动化的IDE检测插件（IDEA、Eclipse）。该插件在扫描代码后，将不符合规约的代码按Blocker/Critical/">
-<meta name="keywords" content="分享">
+  <meta name="description" content="事情是从某基友开始，成天在我面前说公司网络被限制了，被设置成只能访问某些特定的网站让他非常难受，在一天我们讨论着，突然duang出来一个想法….那就是可以试试用代理的形式，避开网络管理员的监控嘛？说干就干，以下是操作流程——">
+<meta name="keywords" content="网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里巴巴Java开发规约插件-体验">
-<meta property="og:url" content="https://123xiao.github.io/blog/2017/10/17/阿里巴巴Java开发规约插件-体验/index.html">
+<meta property="og:title" content="记一次对公司网络限制的突破记录">
+<meta property="og:url" content="https://123xiao.github.io/blog/2018/01/15/network/index.html">
 <meta property="og:site_name" content="无名键客">
-<meta property="og:description" content="插件有哪些功能？ 阿里技术公众号于今年的2月9日首次公布《阿里巴巴Java开发规约》，瞬间引起全民代码规范的热潮，上月底又发布了PDF的终极版，大家踊跃留言，期待配套的静态扫描工具开放出来。  为了让开发者更加方便、快速将规范推动并实行起来，阿里巴巴基于手册内容，研发了一套自动化的IDE检测插件（IDEA、Eclipse）。该插件在扫描代码后，将不符合规约的代码按Blocker/Critical/">
+<meta property="og:description" content="事情是从某基友开始，成天在我面前说公司网络被限制了，被设置成只能访问某些特定的网站让他非常难受，在一天我们讨论着，突然duang出来一个想法….那就是可以试试用代理的形式，避开网络管理员的监控嘛？说干就干，以下是操作流程——">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://images2017.cnblogs.com/blog/521636/201710/521636-20171015113456871-1825659070.png">
-<meta property="og:image" content="http://images2017.cnblogs.com/blog/521636/201710/521636-20171015113722777-1375124743.png">
-<meta property="og:updated_time" content="2018-04-08T11:01:03.000Z">
+<meta property="og:image" content="https://i.loli.net/2018/01/15/5a5c647128dac.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/01/15/5a5c66e8a00fe.jpg">
+<meta property="og:image" content="https://i.loli.net/2018/01/15/5a5c675f31bf4.png">
+<meta property="og:image" content="https://i.loli.net/2018/01/15/5a5c67b64cf9a.png">
+<meta property="og:image" content="https://i.loli.net/2018/01/15/5a5c67f1441ca.png">
+<meta property="og:image" content="https://i.loli.net/2018/01/15/5a5c686b7fbcb.jpg">
+<meta property="og:updated_time" content="2018-04-08T11:00:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿里巴巴Java开发规约插件-体验">
-<meta name="twitter:description" content="插件有哪些功能？ 阿里技术公众号于今年的2月9日首次公布《阿里巴巴Java开发规约》，瞬间引起全民代码规范的热潮，上月底又发布了PDF的终极版，大家踊跃留言，期待配套的静态扫描工具开放出来。  为了让开发者更加方便、快速将规范推动并实行起来，阿里巴巴基于手册内容，研发了一套自动化的IDE检测插件（IDEA、Eclipse）。该插件在扫描代码后，将不符合规约的代码按Blocker/Critical/">
-<meta name="twitter:image" content="http://images2017.cnblogs.com/blog/521636/201710/521636-20171015113456871-1825659070.png">
+<meta name="twitter:title" content="记一次对公司网络限制的突破记录">
+<meta name="twitter:description" content="事情是从某基友开始，成天在我面前说公司网络被限制了，被设置成只能访问某些特定的网站让他非常难受，在一天我们讨论着，突然duang出来一个想法….那就是可以试试用代理的形式，避开网络管理员的监控嘛？说干就干，以下是操作流程——">
+<meta name="twitter:image" content="https://i.loli.net/2018/01/15/5a5c647128dac.jpg">
   
     <link rel="alternative" href="/atom.xml" title="无名键客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/blog/assets/blogImg/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/blog/./main.0cf68a.css">
   <style type="text/css">
@@ -154,36 +158,55 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-阿里巴巴Java开发规约插件-体验" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-network" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      阿里巴巴Java开发规约插件-体验
+      记一次对公司网络限制的突破记录
     </h1>
   
 
         
-        <a href="/blog/2017/10/17/阿里巴巴Java开发规约插件-体验/" class="archive-article-date">
-  	<time datetime="2017-10-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
+        <a href="/blog/2018/01/15/network/" class="archive-article-date">
+  	<time datetime="2018-01-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="插件有哪些功能？"><a href="#插件有哪些功能？" class="headerlink" title="插件有哪些功能？"></a><strong>插件有哪些功能？</strong></h3><pre><code> 阿里技术公众号于今年的2月9日首次公布《阿里巴巴Java开发规约》，瞬间引起全民代码规范的热潮，上月底又发布了PDF的终极版，大家踊跃留言，期待配套的静态扫描工具开放出来。
-
-为了让开发者更加方便、快速将规范推动并实行起来，阿里巴巴基于手册内容，研发了一套自动化的IDE检测插件（IDEA、Eclipse）。该插件在扫描代码后，将不符合规约的代码按Blocker/Critical/Major三个等级显示在下方，甚至在IDEA上，我们还基于Inspection机制提供了实时检测功能，编写代码的同时也能快速发现问题所在。对于历史代码，部分规则实现了批量一键修复的功能，如此爽心悦目的功能是不是很值得拥有？提升代码质量，提高团队研发效能，插件将会一路同行。
-</code></pre><a id="more"></a>
-<h3 id="如何安装IDEA插件？"><a href="#如何安装IDEA插件？" class="headerlink" title="如何安装IDEA插件？"></a><strong>如何安装IDEA插件？</strong></h3><p> 目前，我们已将IDEA版的插件，发布至IDEA官方仓库中(最低支持版本14.1.7，JDK1.7+)。你只需打开 Settings &gt;&gt; Plugins &gt;&gt; Browse repositories 输入 Alibaba 搜索，看到对应插件后即可安装。</p>
-<p> 至于具体如何使用，请大家到官方Github仓库中进行查看。IDEA会自动检测插件新版，并提示出来，所以大家不用担心插件的更新问题。</p>
-<p> Github仓库地址：<a href="https://github.com/alibaba/p3c" target="_blank" rel="noopener">https://github.com/alibaba/p3c</a></p>
-<h3 id="如何安装Eclipse插件？"><a href="#如何安装Eclipse插件？" class="headerlink" title="如何安装Eclipse插件？"></a><strong>如何安装Eclipse插件？</strong></h3><p> Eclipse版插件支持4.2（Juno，JDK1.8+）及以上版本，我们提供自主的Update Site，通过 Help &gt;&gt; Install New Software 然后输入<a href="https://p3c.alibaba.com/plugin/eclipse/update" target="_blank" rel="noopener">https://p3c.alibaba.com/plugin/eclipse/update</a> 即可看到安装列表。大家可以通过 Help &gt;&gt; Check for Udates 进行插件新版检测。</p>
-<h3 id="使用体验"><a href="#使用体验" class="headerlink" title="使用体验"></a>使用体验</h3><p>安装后重启Eclipse，在代码文件上（或内容区）右键- “阿里编码规约扫描”，可以看到你代码中不规范的提示，以及修改建议，边上还有规约的详细信息。</p>
-<p><img src="http://images2017.cnblogs.com/blog/521636/201710/521636-20171015113456871-1825659070.png" alt=""> <img src="http://images2017.cnblogs.com/blog/521636/201710/521636-20171015113722777-1375124743.png" alt=""></p>
+        <p> 事情是从某基友开始，成天在我面前说公司网络被限制了，被设置成只能访问某些特定的网站让他非常难受，在一天我们讨论着，突然duang出来一个想法….那就是可以试试用代理的形式，避开网络管理员的监控嘛？说干就干，以下是操作流程——<br> <img src="https://i.loli.net/2018/01/15/5a5c647128dac.jpg" alt=""><br> <a id="more"></a></p>
+<p>  系统：CentOS7 (以下教程也是针对 CentOS7)</p>
+<p>  网络：国内 国外均可（我们是国内）</p>
+<p>  登录 ssh 的什么的我就不再说了。。。。。</p>
+<p>  <strong>搭建 Shadowsocks 服务</strong></p>
+<p>这个服务是最简单也是最常用的。</p>
+<p><strong>1、安装组件</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> yum install m2crypto python-setuptools</span><br><span class="line"><span class="meta">$</span> easy_install pip</span><br><span class="line"><span class="meta">$</span> pip install shadowsocks</span><br></pre></td></tr></table></figure>
+<p>安装时部分组件需要输入 Y 确认。小内存 VPS 可以分别安装组件。</p>
+<p><strong>2、安装完成后配置服务器参数</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> vi/etc/shadowsocks.json</span><br></pre></td></tr></table></figure>
+<p>写入如下配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>，</span><br><span class="line"><span class="string">"server_port"</span>:<span class="number">8388</span>，</span><br><span class="line"><span class="string">"local_address"</span>:<span class="string">"127.0.0.1"</span>，</span><br><span class="line"><span class="string">"local_port"</span>:<span class="number">1080</span>，</span><br><span class="line"><span class="string">"password"</span>:<span class="string">"mypassword"</span>，</span><br><span class="line"><span class="string">"timeout"</span>:<span class="number">300</span>，</span><br><span class="line"><span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>，</span><br><span class="line"><span class="string">"fast_open"</span>:<span class="literal">false</span>，</span><br><span class="line"><span class="string">"workers"</span>:<span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将上面的 mypassword 替换成你的密码， server_port 也是可以修改的，例如 443 是 Shadowsocks 客户端默认的端口号。</p>
+<p>如果需要修改端口，需要在防火墙里打开响应的端口，用 firewalld 操作就比较简单了：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi/usr/<span class="class"><span class="keyword">lib</span>/<span class="title">firewalld</span>/<span class="title">services</span>/<span class="title">ss</span>.<span class="title">xml</span></span></span><br></pre></td></tr></table></figure>
+<p>下面代码粘贴到里面：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">service</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">short</span>&gt;</span>SS<span class="tag">&lt;/<span class="name">short</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">description</span>&gt;</span>Shadowsocks port</span><br><span class="line"><span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">portprotocol="tcp"port="自定义ss端口号"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>保存退出，然后重启 firewalld 服务：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ firewall-<span class="keyword">cmd</span> --permanent --add-service=ss</span><br><span class="line">$ firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>运行命令，启动 Shadowsocks 服务</p>
+<p>运行下面的命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssserver -c /etc/shadowsocks.json</span><br></pre></td></tr></table></figure>
+<p>至此 shadowsocks 搭建完成。<br><img src="https://i.loli.net/2018/01/15/5a5c66e8a00fe.jpg" alt=""></p>
+<p>搭建完成后使用自己的Shadowsocks连接上就好了，连接后</p>
+<p><img src="https://i.loli.net/2018/01/15/5a5c675f31bf4.png" alt=""></p>
+<p>记录一下遇见的错误：<br><img src="https://i.loli.net/2018/01/15/5a5c67b64cf9a.png" alt=""><br>协议和混淆是这样的，不然就会报错<br><img src="https://i.loli.net/2018/01/15/5a5c67f1441ca.png" alt=""></p>
+<p>还有如果需要后台静静的运行的话直接<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssserver -c /etc/shadowsocks.json -d start</span><br></pre></td></tr></table></figure></p>
+<p>好了，教程结束<del>~</del><del>~</del>~~~<br><img src="https://i.loli.net/2018/01/15/5a5c686b7fbcb.jpg" alt=""></p>
 
       
 
@@ -228,7 +251,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分享</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
         		</li>
       		
 		</ul>
@@ -284,7 +307,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://123xiao.github.io/blog/2017/10/17/阿里巴巴Java开发规约插件-体验/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://123xiao.github.io/blog/2018/01/15/network/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,18 +321,18 @@
   
 <nav id="article-nav">
   
-    <a href="/blog/2017/11/22/Swagger介绍-一套流行的API框架/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/2018/04/08/hexoreload/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Swagger介绍-一套流行的API框架
+          hexo博客重装与位置移动记录
         
       </div>
     </a>
   
   
-    <a href="/blog/2017/09/29/Eclipse上的SmartQQ插件，防Boss利器/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Eclipse上的SmartQQ插件，防Boss利器</div>
+    <a href="/blog/2017/11/22/Swagger/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swagger介绍-一套流行的API框架</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -348,7 +371,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://123xiao.github.io/blog/blog/2017/10/17/阿里巴巴Java开发规约插件-体验/",
+  id: "https://123xiao.github.io/blog/blog/2018/01/15/network/",
   owner: '123xiao',
   repo: '123xiao.github.io',
   oauth: {
@@ -451,15 +474,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">干货</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分享</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Web架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,7 +494,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web架构</a>
+                <a href="javascript:void(0)" class="js-tag color3">干货</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,6 +551,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="https://www.oschina.net/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>开源中国</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://billts.site/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农BTS</a>
             </li>
           
         </ul>

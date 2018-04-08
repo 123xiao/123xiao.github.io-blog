@@ -6,27 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://123xiao.github.io/blog">
-  <title>从0开始搭建坚不可摧的Web系统主流架构 | 无名键客</title>
+  <title>Swagger介绍-一套流行的API框架 | 无名键客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主题简介： 1、网站系统架构当前现状 2、Web系统主流架构解析 3、互联网技术团队初期组建经验分享 本文主要结合我之前在海尔电商平台和现在公司的一些实际架构经验，综合实际情况和个人的理解，跟大家分享一下搭建Web系统的一些常用的技术架构和应用技巧。">
-<meta name="keywords" content="Web架构">
+  <meta name="description" content="简介号称：世界最流行的API框架 官网：http://swagger.io/ 解决什么问题：在前后台分离的开发模式中，减小接口定义沟通成本，方便开发过程中测试，自动生成接口文档。 实例代码位置：https://github.com/123xiao/swagger">
+<meta name="keywords" content="分享">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从0开始搭建坚不可摧的Web系统主流架构">
-<meta property="og:url" content="https://123xiao.github.io/blog/2017/09/01/从0开始搭建坚不可摧的Web系统主流架构/index.html">
+<meta property="og:title" content="Swagger介绍-一套流行的API框架">
+<meta property="og:url" content="https://123xiao.github.io/blog/2017/11/22/Swagger/index.html">
 <meta property="og:site_name" content="无名键客">
-<meta property="og:description" content="主题简介： 1、网站系统架构当前现状 2、Web系统主流架构解析 3、互联网技术团队初期组建经验分享 本文主要结合我之前在海尔电商平台和现在公司的一些实际架构经验，综合实际情况和个人的理解，跟大家分享一下搭建Web系统的一些常用的技术架构和应用技巧。">
+<meta property="og:description" content="简介号称：世界最流行的API框架 官网：http://swagger.io/ 解决什么问题：在前后台分离的开发模式中，减小接口定义沟通成本，方便开发过程中测试，自动生成接口文档。 实例代码位置：https://github.com/123xiao/swagger">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://photocdn.sohu.com/20150714/mp22624306_1436839957841_31.jpeg">
-<meta property="og:updated_time" content="2018-04-08T11:00:29.000Z">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1flqyqlf6lrj30vk0f6q4a.jpg">
+<meta property="og:updated_time" content="2018-04-08T11:00:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从0开始搭建坚不可摧的Web系统主流架构">
-<meta name="twitter:description" content="主题简介： 1、网站系统架构当前现状 2、Web系统主流架构解析 3、互联网技术团队初期组建经验分享 本文主要结合我之前在海尔电商平台和现在公司的一些实际架构经验，综合实际情况和个人的理解，跟大家分享一下搭建Web系统的一些常用的技术架构和应用技巧。">
-<meta name="twitter:image" content="http://photocdn.sohu.com/20150714/mp22624306_1436839957841_31.jpeg">
+<meta name="twitter:title" content="Swagger介绍-一套流行的API框架">
+<meta name="twitter:description" content="简介号称：世界最流行的API框架 官网：http://swagger.io/ 解决什么问题：在前后台分离的开发模式中，减小接口定义沟通成本，方便开发过程中测试，自动生成接口文档。 实例代码位置：https://github.com/123xiao/swagger">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1flqyqlf6lrj30vk0f6q4a.jpg">
   
     <link rel="alternative" href="/atom.xml" title="无名键客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/blog/assets/blogImg/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/blog/./main.0cf68a.css">
   <style type="text/css">
@@ -153,92 +153,42 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-从0开始搭建坚不可摧的Web系统主流架构" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Swagger" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      从0开始搭建坚不可摧的Web系统主流架构
+      Swagger介绍-一套流行的API框架
     </h1>
   
 
         
-        <a href="/blog/2017/09/01/从0开始搭建坚不可摧的Web系统主流架构/" class="archive-article-date">
-  	<time datetime="2017-08-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
+        <a href="/blog/2017/11/22/Swagger/" class="archive-article-date">
+  	<time datetime="2017-11-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://photocdn.sohu.com/20150714/mp22624306_1436839957841_31.jpeg" alt=""><br>主题简介：</p>
-<p>1、网站系统架构当前现状</p>
-<p>2、Web系统主流架构解析</p>
-<p>3、互联网技术团队初期组建经验分享</p>
-<p>本文主要结合我之前在海尔电商平台和现在公司的一些实际架构经验，综合实际情况和个人的理解，跟大家分享一下搭建Web系统的一些常用的技术架构和应用技巧。</p>
-<a id="more"></a>
-<p><strong>首先要跟大家探讨一个问题，就是当前传统IT企业或是传统企业的IT系统目前的系统架构是怎样的呢？</strong></p>
-<p>就我所经历的NEC软件、海尔集团、青岛航空等某种程度上都属于传统企业。我本人也是最近三年在海尔搞电商平台的时候，才更多地接触互联网的思维和技术架构。</p>
-<p>我在青岛航空的这一年多时间里以及与青岛其他IT同行讨论时，发现了一个现象：就是目前很多传统企业的技术架构跟互联网企业的技术架构越来越相似了，或是传统企业越来越倾向于互联网的主流技术架构和服务器部署等方式。</p>
-<p>虽然传统企业可能没有互联网企业的大流量、数据量，高并发(互联网企业真正大流量高并发的也就那么几家)，但是两者在技术架构上的很多方面、方向都是一致的，个人感觉这是一个比较好的现象。传统企业借鉴互联网企业的一些优秀的技术架构和部署方式，可以更好地保障自身的业务系统，提高系统的使用效率等。成熟的开源技术架构也可以为企业节省很多IT成本。</p>
-<p>青岛航空有自己的官网，偶尔搞个抢票，促销或是暑运春运，有时候会受到一些网络的恶意攻击。这时虽然流量会陡增，但是在目前的技术架构上完全可以抵挡住。</p>
-<p><strong>本文将分析目前主流的一些Web技术架构，可能更适合中小互联网公司或是一些中大型的传统企业，技术好坏关键看与实际情况集合得怎样，希望大家能够有所收获，能够在各自领域架构系统的时候，能有所帮助。</strong></p>
-<p><strong>网络接入层</strong></p>
-<p>1、防火墙</p>
-<p>所有的访问请求(企业内部访问可能除外)都是要经过企业级的防火墙设备。不管是企业自身的机房还是托管的IDC机房，一般最外层都是由防火墙把关所有访问请求。对于一些恶意的木马植入等，防火墙会抵挡住大部分。作为Web架构，最外层一定要选好防火墙，而且防火墙的架构最低一般会选择不同型号的两台。</p>
-<p>2、安全设备</p>
-<p>防火墙之后会接入IPS(入侵防御系统)，WAF(Web应用防护系统)。这一块区域主要对网络安全，系统安全做检测和防护的，可以采用商业设备(推荐)，资金不足的企业也可以采用开源设备，这里推荐一款开源产品OSSIM，有兴趣的同学可以了解一下。</p>
-<p>3、负载均衡</p>
-<p>经过网络安全防护之后，接下来是我们的硬负载设备（该层可有可无），一般硬负载均衡设备主要有F5，A10，相对比较贵，企业可以根据情况选择。</p>
-<p>硬负载接下来一般会有一层软负载(当然软负载和硬负载可以只留一种也可以都有)。软负载层一般也会部署反向代理服务器，用作反向代理，也起到了防护安全的作用。</p>
-<p>一般在网络规划上，该层位于DMZ区域，该层之下的服务器位于内网。这块隔离了外部请求和内网的直接交互，安全上有所提高。一般该层的技术选择有Nginx，Apache，Haproxy，LVS等。大部分应该是一Nginx居多，既可以做负载均衡，也可以做反向代理，并且相对而言高并发效率更好。</p>
-<p>关于这几者的区别，网上也有很多，有兴趣的同学可以多多比较。其中说明一点的是LVS是工作在网络4层之上仅作分发之用，没有流量的产生，其他三种是工作在7层之上，如果不适用硬负载设备的话，建议使用LVS作为流量转发的负载设备，然后再是Nginx或是Haproxy。Apache在一些传统企业存在或是使用得比较多，也比较稳定。</p>
-<p><strong>前端架构</strong></p>
-<p>一般在负载均衡后面是挂载的各种各样的应用服务器。在部署应用服务器的时候一般会将静态资源（JS，CSS，图片，文件）等单独一台服务器部署，以减轻应用服务器的带宽和IO，提高访问效率。将这些静态资源部署在静态资源服务器、文件服务器、图片服务器等。一般地如果我们有CDN，会将这些静态资源放在CDN上以提高网络加载速度。常见的文件服务器和图片服务器的技术架构有FastDFS，MogileFS，GraphicsMagick等。</p>
-<p>但是中小企业建议直接购买云服务。一是可以减少运维成本，二是可以提高访问的速度，一般云服务都搭配CDN。自己搭建文件或图片服务器的运维成本还是比较高，对技术要求也比较深入。这里大家在架构的时候需要仔细考虑好。</p>
-<p><strong>应用服务器</strong></p>
-<p>1、web应用服务器</p>
-<p>应用服务器一般是tomcat，IIS，resin等。一般有一个应用视情况会有多台服务器(最少2台)，应用之间要解耦，应用之间的依赖尽量采用接口交互（尽量避免数据库方面dblink等方式）。各位在做应用系统解耦的时候可以参考现在比较流行的服务化，微服务等技术架构如dubbox等，但是需要对开发有一定的了解。虽然我们的团队经历过和正在做dubbox的服务化，但是本人参与不是很多，所以也希望能够向大家多学习。</p>
-<p>2、消息队列服务器</p>
-<p>增加消息队列服务器有以下几点好处：</p>
-<p>1.由于消息队列服务器的速度远高于数据库，能够快速处理并返回数据；</p>
-<p>2.消息队列服务器具有更好的扩展性；</p>
-<p>3.在高并发的情况下，延迟写入数据库，可以有效降低数据库的压力。</p>
-<p>消息队列经常用在高并发应用（如抢购），不同系统模块间高速数据交互等。常用的消息队列技术有ActiveMQ，RabbitMQ等，这些技术本身就有很好的集群或是主备机制，并且有监控的页面，非常方便快速扩展和使用。监控在使用的时候，一般需要脚本(CURL获取监控页面的值和监控页面的http staus)或其他方式监控，实现故障自动告警。</p>
-<p>==3、缓存服务器==</p>
-<p>数据缓存服务器，常有的部署有Memcached，Redis等，目前应该是以Redis居多吧。另外应用应用服务器集群的session问题也常常用到Redis。Redis自身的哨兵模式，集群Cluster(3.0以上版本支持)可以避免单点故障，方便横向和纵向扩展，缓存热点数据提高访问效率，在高并发环境也是经常用到的技术。</p>
-<p>这里要注意一下，并不是所有的Web架构都需要消息队列或是数据库缓存，视情况而定，根据系统的并发量和访问量评估。合适自己的才是最好的。</p>
-<p><strong>数据库层</strong></p>
-<p>1、数据库连接池</p>
-<p>应用跟数据库之间一般要尽量避免应用直接连接数据库，采用数据库连接池的方式。数据库连接池技术带来的优势有资源复用、更快的相应速度、统一的连接管理、避免连接泄露等好处。常用的有c3p0,dbcp,druid等，这里强烈推荐Druid。</p>
-<p>2、数据库架构</p>
-<p>数据库连接池后面就是数据库了。数据库种类也比较多，常用的有Oracle，MySQL等。当然了，一个系统使用一套数据库，尽量避免多套应用系统使用同一个数据库。</p>
-<p>由于数据库的重要性，需要考虑到数据库方案。包括实现数据库的高可用、负载均衡等，有些电商平台还需要实现读写分离，数据库的横向纵向拆分等，以实现复杂的数据库应用。</p>
-<p>Oracle的常用架构有RAC，DG(dataguard)，而Oracle的成本比较高，所以很多中小企业会选择MySQL。MySQL也有不同的分支和技术方案，如官方版本的MariaDB，PerconaDB等。常用的高可用架构有复制，Cluster，不同分支都有支持，这里我推荐大家使用MariaDB10.0以上的版本，效率相对较高。</p>
-<p>MySQL的中间件也比较多，用来支持负载均衡，读写分离，分库分表等。如OneProxy，MyCAT等都是非常优秀的MySQL数据库中间件，建议大家有时间多研究，架构出稳定可靠的数据库集群。</p>
-<p>数据库的备份和恢复这里就不单独说了，在下面的灾备方案中统一说明。</p>
-<p>3、存储设备</p>
-<p>一般企业会有专业的存储设备。存储设备的raid选择、主备架构方案等都需要提前架构以及跟存储厂商沟通讨论。作为最关键的设备之一，一定要避免单点故障，否则将导致整个IT系统宕机。</p>
-<p>以上是关于常见的Web系统架构的一个概述，以及常用的一些技术方案的说明，有不足之处，请大家多多指教，相互学习。</p>
-<p><strong>灾备方案</strong></p>
-<p>接下来跟大家介绍关于备份相关的问题。不管传统企业还是互联网，备份一定是一个及其关键重要的工作。没有备份，就意味着系统没有最基本的保障。</p>
-<p>常见的灾备方案一般是同城热备，异地灾备的方式，即两地三中心的方式。同城的网络延迟一般可以做到比较小，所以在用实时热备的方式是可行的。将应用服务器、数据库等通过实时同步的方式，数据传输到同城其他机房，实现跨机房的热备。</p>
-<p>异地采用延迟备份的方式。将本地机房的备份集通过网络传输传送一份到异地机房实现异地灾备。其中异地灾备是有数据延迟的，一般一天。</p>
-<p>不管是应用服务器，还是数据备份的方式都有很多种，因时间限制就不一一跟大家分享了。这里要着重注意的是备份集的测试方案，一定要与灾备方案一起，并根据测试方案严格定时执行，确保备份集的准确性。</p>
-<p><strong>其他方面</strong></p>
-<p>作为一套完整的IT技术架构方案，其实还有很多方面需要考虑，例如监控方案。我们常用的监控方案有lepus监控数据库、Zabbix、脚本三者结合的方式。通过邮件，阿里大于短信等方式发送报警，日志服务器用于采集和分析日志，如ELK等。还有一般企业会有数据平台用于分析自己数据，这里可以参考我的另一篇文章<a href="http://mp.weixin.qq.com/s?__biz=MzI4NTA1MDEwNg==&amp;mid=2650759134&amp;idx=2&amp;sn=a811137f07c41573104a1adc8b94b961&amp;chksm=f3f9ea4bc48e635d8dd86c96de944045fc5ab3cac9939bcea3bc0688787bea943bec2e4be81a&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">《数据即金钱，中小企业如何搭建数据平台分得一杯羹？》</a></p>
-<p>另外一般企业为了节省成本会考虑虚拟化，将服务器等硬件资源虚拟化，提高利用率节省企业的成本，进而为企业的私有云搭建奠定基础。以后希望有机会跟大家一起交流虚拟化+私有云的技术方案，这也是我们现在正在着手进行的，很有实践参考意义。</p>
-<p><strong>关于互联网创业初期技术团队</strong></p>
-<p>上面这些是关于技术方面的架构，接下来的时间简单分享一下关于技术团队初创期间的一些经验教训和想法，欢迎拍砖。</p>
-<p>主要以下几点：</p>
-<p>1.以核心业务为中心，初期技术团队不断满足业务需求。避免盲目扩张团队规模和采用过于超强的技术架构，技术架构要匹配业务发展的需求和规模。</p>
-<p>2.建议初期以外包为主，但是核心业务和技术架构必须以自己团队的人为主且不能动摇。要有外包项目结束后能迅速接手的能力。</p>
-<p>3.团队要小而精，扁平化管理，少管理岗，多技术岗，团队要有共同的目标和发展愿景。</p>
-<p>传统企业转型互联网尤其要注意，纵使财大气粗，也要精打细算。就个人而言，经历过IT团队短短一年左右的时间从13人到200多号人，业务规划却迟迟没有突破的情况，最终大批裁员，拼命挣扎的一种状态。</p>
-<p>友情提醒一下各位，当注意到团队成员工作并不饱和，但同一岗位还有招聘计划时，一定要考虑一下是该招聘还是该减员。</p>
-<p>纵观一批批倒下的初创公司，失败的经验教训很值得我们深入研究和学习。</p>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a><a name="t0"></a>简介</h1><p>号称：世界最流行的API框架</p>
+<p>官网：<a href="http://swagger.io/" target="_blank" rel="noopener">http://swagger.io/</a></p>
+<p>解决什么问题：在前后台分离的开发模式中，减小接口定义沟通成本，方便开发过程中测试，自动生成接口文档。</p>
+<p>实例代码位置：<a href="https://github.com/123xiao/swagger" target="_blank" rel="noopener">https://github.com/123xiao/swagger</a><br><a id="more"></a></p>
+<h1 id="swagger使用方式"><a href="#swagger使用方式" class="headerlink" title="swagger使用方式"></a><a name="t1"></a>swagger使用方式</h1><h2 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a><a name="t2"></a>第一种</h2><p>定义YAML文件，然后可以生成各种语言的代码框架，对于后台程序员来说，较少人会愿意写出一堆YAML格式。</p>
+<h2 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a><a name="t3"></a>第二种</h2><p>swagger有各种语言的插件，可以通过配置及少量代码，生成接口文档及测试界面。</p>
+<p>我们多做了：一次性的配置及少量注解代码。</p>
+<p>我们不用再做：1、到Wiki中更新接口文档；2、Postman形式的测试；3、Curl形式的测试</p>
+<h1 id="swagger-java使用介绍"><a href="#swagger-java使用介绍" class="headerlink" title="swagger java使用介绍"></a><a name="t4"></a>swagger java使用介绍</h1><p>对于一个SpringMVC项目，使用swagger的配置如下：</p>
+<h2 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a><a name="t5"></a>pom.xml</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Swagger --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.swagger<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>swagger-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="SwaggerConfiguration-java"><a href="#SwaggerConfiguration-java" class="headerlink" title="SwaggerConfiguration.java"></a><a name="t6"></a>SwaggerConfiguration.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  </span><br><span class="line"><span class="meta">@EnableSwagger</span>2  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConfiguration</span> </span>&#123;  </span><br><span class="line">    <span class="meta">@Bean</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">api</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)  </span><br><span class="line">                .select()  </span><br><span class="line">                .apis(RequestHandlerSelectors.any())  </span><br><span class="line">                .paths(PathSelectors.any())  </span><br><span class="line">                .build();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="SwaggerWebMvcConfigurerAdapter-java"><a href="#SwaggerWebMvcConfigurerAdapter-java" class="headerlink" title="SwaggerWebMvcConfigurerAdapter.java"></a><a name="t7"></a>SwaggerWebMvcConfigurerAdapter.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(basePackages = <span class="string">"com.xx.travel.csc.stat.controller"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerWebMvcConfigurerAdapter</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ViewResolver <span class="title">viewResolver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        InternalResourceViewResolver viewResolver = <span class="keyword">new</span> InternalResourceViewResolver();</span><br><span class="line">        viewResolver.setViewClass(JstlView.class);</span><br><span class="line">        viewResolver.setPrefix(<span class="string">"/WEB-INF/views/"</span>);</span><br><span class="line">        viewResolver.setSuffix(<span class="string">".jsp"</span>);</span><br><span class="line">        <span class="keyword">return</span> viewResolver;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MessageSource <span class="title">messageSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ResourceBundleMessageSource messageSource = <span class="keyword">new</span> ResourceBundleMessageSource();</span><br><span class="line">        messageSource.setBasename(<span class="string">"messages"</span>);</span><br><span class="line">        <span class="keyword">return</span> messageSource;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.addResourceHandlers(registry);</span><br><span class="line">        registry.addResourceHandler(<span class="string">"swagger-ui.html"</span>)</span><br><span class="line">                .addResourceLocations(<span class="string">"classpath:/META-INF/resources/"</span>);</span><br><span class="line">        registry.addResourceHandler(<span class="string">"/webjars/**"</span>)</span><br><span class="line">                .addResourceLocations(<span class="string">"classpath:/META-INF/resources/webjars/"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configureDefaultServletHandling</span><span class="params">(DefaultServletHandlerConfigurer configurer)</span> </span>&#123;</span><br><span class="line">        configurer.enable();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Controller实例"><a href="#Controller实例" class="headerlink" title="Controller实例"></a><a name="t8"></a>Controller实例</h2><p>然后，只要在我们的Controller里面增加注解 ApiOperation和ApiParam 即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Api</span>(tags = <span class="string">"TbAccountControllerApi"</span>, description = <span class="string">"账户管理接口相关api描述"</span>, hidden = <span class="keyword">true</span>, position = <span class="number">1</span>)</span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TbAccountController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(<span class="keyword">this</span>.getClass());</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> TbAccountService tbAccountService;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@ApiOperation</span>(value = <span class="string">"根据ID查询账户基本信息"</span>)</span><br><span class="line">	<span class="meta">@ApiImplicitParam</span>(paramType = <span class="string">"path"</span>, name = <span class="string">"accountId"</span>, dataType = <span class="string">"String"</span>, required = <span class="keyword">true</span>, value = <span class="string">"账户编号"</span>)</span><br><span class="line">	<span class="meta">@RequestMapping</span>(value = <span class="string">"/api/account/&#123;accountId&#125;"</span>, method = RequestMethod.GET)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">getAccount</span><span class="params">(@PathVariable(name = <span class="string">"accountId"</span>)</span> String accountId) </span>&#123;</span><br><span class="line">		logger.info(<span class="string">"&gt;&gt;账户查询接口:"</span> + accountId);</span><br><span class="line">		ResultMessage resultMessage = <span class="keyword">new</span> ResultMessage(ErrorCode.ACCOUNT_SERVICE_OK);</span><br><span class="line">		<span class="keyword">if</span> (FieldValidator.isEmpty(accountId)) &#123;</span><br><span class="line">			resultMessage.setResultMessage(ErrorCode.ACCOUNT_SERVICE_REQUIRED_FIELD_IS_NULL);</span><br><span class="line">			<span class="keyword">return</span> resultMessage;</span><br><span class="line">		&#125;</span><br><span class="line">		TbAccount account = tbAccountService.findByAccountId(accountId);</span><br><span class="line">		resultMessage.setData(account);</span><br><span class="line">		<span class="keyword">return</span> resultMessage;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Web界面"><a href="#Web界面" class="headerlink" title="Web界面"></a><a name="t9"></a>Web界面</h1><p>启动项目，输入Http://Path/swagger-ui.html，就可以给前端展示相关的API文档，并像使用Postman以及Curl命令一样，通过Web界面进行接口测试。</p>
+<p><img src="http://ww3.sinaimg.cn/large/0060lm7Tly1flqyqlf6lrj30vk0f6q4a.jpg" alt="enter description here"></p>
 
       
 
@@ -283,7 +233,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web架构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分享</a>
         		</li>
       		
 		</ul>
@@ -339,7 +289,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://123xiao.github.io/blog/2017/09/01/从0开始搭建坚不可摧的Web系统主流架构/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://123xiao.github.io/blog/2017/11/22/Swagger/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -353,18 +303,18 @@
   
 <nav id="article-nav">
   
-    <a href="/blog/2017/09/01/Spring源码阅读（一）——整体结构/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/2018/01/15/network/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Spring源码阅读（一）——整体结构
+          记一次对公司网络限制的突破记录
         
       </div>
     </a>
   
   
-    <a href="/blog/2017/08/31/2017，站在巨人肩膀我们一路前行/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2017，站在巨人肩膀我们一路前行</div>
+    <a href="/blog/2017/10/17/alibaba/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">阿里巴巴Java开发规约插件-体验</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -403,7 +353,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://123xiao.github.io/blog/blog/2017/09/01/从0开始搭建坚不可摧的Web系统主流架构/",
+  id: "https://123xiao.github.io/blog/blog/2017/11/22/Swagger/",
   owner: '123xiao',
   repo: '123xiao.github.io',
   oauth: {
@@ -506,15 +456,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">干货</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分享</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Web架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,7 +476,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web架构</a>
+                <a href="javascript:void(0)" class="js-tag color3">干货</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,6 +533,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="https://www.oschina.net/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>开源中国</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://billts.site/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农BTS</a>
             </li>
           
         </ul>

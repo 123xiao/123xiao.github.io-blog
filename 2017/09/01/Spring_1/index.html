@@ -6,27 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://123xiao.github.io/blog">
-  <title>Eclipse上的SmartQQ插件，防Boss利器 | 无名键客</title>
+  <title>Spring源码阅读（一）——整体结构 | 无名键客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Eclipse上的SmartQQ插件，防Boss利器，让你可以在eclipse中使用QQ进行聊天 Intellij IDEA上的插件请移步这里: https://github.com/Jamling/SmartQQ4IntelliJ, 支持所有的Intellij IDE哦，包含Android Studio, WebStrom等">
-<meta name="keywords" content="分享,随笔">
+  <meta name="description" content="spring 总共大约有20个模块，由1300多个不同的文件构成。Spring源码阅读可以分为三个路线：IOC，AOP，外部组件。  Spring整体结构Spring框架根据功能可以分为核心容器，AOP切面编程，数据访问和WEB这四个主要的部分。">
+<meta name="keywords" content="Spring,源码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Eclipse上的SmartQQ插件，防Boss利器">
-<meta property="og:url" content="https://123xiao.github.io/blog/2017/09/29/Eclipse上的SmartQQ插件，防Boss利器/index.html">
+<meta property="og:title" content="Spring源码阅读（一）——整体结构">
+<meta property="og:url" content="https://123xiao.github.io/blog/2017/09/01/Spring_1/index.html">
 <meta property="og:site_name" content="无名键客">
-<meta property="og:description" content="Eclipse上的SmartQQ插件，防Boss利器，让你可以在eclipse中使用QQ进行聊天 Intellij IDEA上的插件请移步这里: https://github.com/Jamling/SmartQQ4IntelliJ, 支持所有的Intellij IDE哦，包含Android Studio, WebStrom等">
+<meta property="og:description" content="spring 总共大约有20个模块，由1300多个不同的文件构成。Spring源码阅读可以分为三个路线：IOC，AOP，外部组件。  Spring整体结构Spring框架根据功能可以分为核心容器，AOP切面编程，数据访问和WEB这四个主要的部分。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/Jamling/SmartQQ4Eclipse/master/screenshot.gif">
-<meta property="og:updated_time" content="2018-04-08T10:58:51.572Z">
+<meta property="og:image" content="http://img.blog.csdn.net/20170828123622192?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzk2NzE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-04-08T10:59:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Eclipse上的SmartQQ插件，防Boss利器">
-<meta name="twitter:description" content="Eclipse上的SmartQQ插件，防Boss利器，让你可以在eclipse中使用QQ进行聊天 Intellij IDEA上的插件请移步这里: https://github.com/Jamling/SmartQQ4IntelliJ, 支持所有的Intellij IDE哦，包含Android Studio, WebStrom等">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Jamling/SmartQQ4Eclipse/master/screenshot.gif">
+<meta name="twitter:title" content="Spring源码阅读（一）——整体结构">
+<meta name="twitter:description" content="spring 总共大约有20个模块，由1300多个不同的文件构成。Spring源码阅读可以分为三个路线：IOC，AOP，外部组件。  Spring整体结构Spring框架根据功能可以分为核心容器，AOP切面编程，数据访问和WEB这四个主要的部分。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170828123622192?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzk2NzE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
   
     <link rel="alternative" href="/atom.xml" title="无名键客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/blog/assets/blogImg/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/blog/./main.0cf68a.css">
   <style type="text/css">
@@ -153,138 +153,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Eclipse上的SmartQQ插件，防Boss利器" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Spring_1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Eclipse上的SmartQQ插件，防Boss利器
+      Spring源码阅读（一）——整体结构
     </h1>
   
 
         
-        <a href="/blog/2017/09/29/Eclipse上的SmartQQ插件，防Boss利器/" class="archive-article-date">
-  	<time datetime="2017-09-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
+        <a href="/blog/2017/09/01/Spring_1/" class="archive-article-date">
+  	<time datetime="2017-08-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Eclipse上的SmartQQ插件，防Boss利器，让你可以在eclipse中使用QQ进行聊天</p>
-<p>Intellij IDEA上的插件请移步这里: <a href="https://github.com/Jamling/SmartQQ4IntelliJ" target="_blank" rel="noopener">https://github.com/Jamling/SmartQQ4IntelliJ</a>, 支持所有的Intellij IDE哦，包含Android Studio, WebStrom等</p>
-<p><a href="https://raw.githubusercontent.com/Jamling/SmartQQ4Eclipse/master/screenshot.gif" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/Jamling/SmartQQ4Eclipse/master/screenshot.gif" alt="screenshot"></a><br><a id="more"></a></p>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a><a href="#%E5%8A%9F%E8%83%BD"></a>功能</h2><p>特色功能</p>
+        <blockquote>
+<p><a href="http://lib.csdn.net/base/javaee" title="Java EE知识库" target="_blank" rel="noopener">spring</a> 总共大约有20个模块，由1300多个不同的文件构成。<br>Spring源码阅读可以分为三个路线：IOC，AOP，外部组件。</p>
+</blockquote>
+<h2 id="Spring整体结构"><a href="#Spring整体结构" class="headerlink" title="Spring整体结构"></a><a name="t0"></a>Spring整体结构</h2><p>Spring框架根据功能可以分为核心容器，AOP切面编程，数据访问和WEB这四个主要的部分。<br><img src="http://img.blog.csdn.net/20170828123622192?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzk2NzE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="enter description here"><br><a id="more"></a></p>
+<h3 id="（一）核心容器"><a href="#（一）核心容器" class="headerlink" title="（一）核心容器"></a><a name="t1"></a>（一）核心容器</h3><p>核心容器主要是由spring-beans，spring-core，spring-context和spring-expression组成。</p>
 <ul>
-<li>热键设定</li>
-<li>一键关闭</li>
-<li>支持图灵机器人接入</li>
+<li><p>spring-beans，spring-core是spring框架的核心包，实现了控制反转和依赖注入的容器功能。</p>
+</li>
+<li><p>控制反转(IOC)是指把传统上由程序代码直接操控的对象的调用权交给容器，通过容器来实现对象组件的装配和管理。所谓的“控制反转”概念就是对组件对象控制权的转移，从程序代码本身转移到了外部容器。</p>
+</li>
+<li><p>依赖注入(DI)是控制反转的一种实现方式，除却依赖注入还有依赖查找(DL)，后来依赖查找被移除所以Spring中的控制反转也被称为依赖注入。依赖注入主要包括：接口注入（Interface Injection），设值注入（Setter Injection）和构造子注入（Constructor Injection）三种方式。</p>
+</li>
+<li><p>BeanFactory 接口是Spring框架中的核心接口，它是工厂模式的具体实现。BeanFactory 使用控制反转对应用程序的配置和依赖性规范与实际的应用程序代码进行了分离。但 BeanFactory 容器实例化后并不会自动实例化 Bean，只有当 Bean 被使用时 BeanFactory 容器才会对该 Bean 进行实例化与依赖关系的装配。</p>
+</li>
+<li><p>spring-context模块构架于 spring-beans和spring-core核心包之上，拓展了BeanFactory生成Spring的上下文环境。ApplicationContext是该模块的核心接口，她是 BeanFactory 的超类，与 BeanFactory 不同，ApplicationContext 容器实例化后会自动对所有的单实例 Bean 进行实例化与依赖关系的装配，使之处于待用状态。</p>
+</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>Origin</th>
-<th>Eclipse</th>
-<th>IntelliJ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>文本消息</td>
-<td>yes</td>
-<td>X</td>
-<td>X</td>
-</tr>
-<tr>
-<td>表情</td>
-<td>yes (系统表情)</td>
-<td>X</td>
-<td>X</td>
-</tr>
-<tr>
-<td>图灵QQ机器人</td>
-<td>X</td>
-<td>yes</td>
-<td>X</td>
-</tr>
-<tr>
-<td><a href="http://api.ieclipse.cn/smartqq/" target="_blank" rel="noopener">发送文件</a></td>
-<td>X</td>
-<td>yes</td>
-<td>O 不支工程文件快捷发送</td>
-</tr>
-<tr>
-<td>消息群发</td>
-<td>X</td>
-<td>yes</td>
-<td>X</td>
-</tr>
-<tr>
-<td>代码评审</td>
-<td>X</td>
-<td>yes</td>
-<td>X</td>
-</tr>
-</tbody>
-</table>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a><a href="#%E5%AE%89%E8%A3%85"></a>安装</h2><h3 id="Eclipse-Marketplace"><a href="#Eclipse-Marketplace" class="headerlink" title="Eclipse Marketplace"></a><a href="#eclipse-marketplace"></a>Eclipse Marketplace</h3><ol>
-<li>点击Eclipse-&gt;Help-&gt;Eclipse Marketplace…打开eclipse插件市场</li>
-<li>输入SmartQQ搜索</li>
-<li>点击Install安装</li>
-</ol>
-<p><strong>推荐使用Eclipse Martplace安装</strong></p>
-<h3 id="Install-New-Software"><a href="#Install-New-Software" class="headerlink" title="Install New Software"></a><a href="#install-new-software"></a>Install New Software</h3><ol>
-<li>点击Eclipse-&gt;Help-&gt;Install New Software…搜索插件</li>
-<li>在Work with后面的输入框中输入<a href="http://dl.ieclipse.cn/updates/" target="_blank" rel="noopener">http://dl.ieclipse.cn/updates/</a> 并回车</li>
-<li>选中SmartQQ，并取消勾选”Contact all update site during install to find required software”</li>
-<li>点击底部Next按钮继续安装</li>
-</ol>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a><a href="#%E4%BD%BF%E7%94%A8"></a>使用</h2><ol>
-<li>点击Windows-&gt;Show view，找到SmartQQ下的Smart双击打开Smart视图</li>
-<li>点击视图工具栏或菜单栏中的同步图标进行登录</li>
-<li>使用手机QQ扫描二维码</li>
-<li>验证成功后，等待拉取最近消息，好友及群组列表</li>
-<li>双击Smart视图中的好友或群，打开聊天窗口（聊天窗口为Console）</li>
-<li>使用快捷键或点击I图标，激活输入窗口（不建议直接在console中输入，会导致同步时间）</li>
-<li>输入聊天内容，并按快捷键（默认为Enter）发送聊天信息</li>
-</ol>
-<h2 id="进阶使用"><a href="#进阶使用" class="headerlink" title="进阶使用"></a><a href="#%E8%BF%9B%E9%98%B6%E4%BD%BF%E7%94%A8"></a>进阶使用</h2><ol>
-<li>文件发送</li>
-</ol>
+<h3 id="（二）AOP"><a href="#（二）AOP" class="headerlink" title="（二）AOP"></a><a name="t2"></a>（二）AOP</h3><p>AOP主要是spring-aop，spring-aspects和spring-instrumentation组成</p>
 <ul>
-<li>点击聊天Console菜单（就是那个倒三角）选择 Send File 或 Send Project File 选择文件后发送</li>
-<li>对要发送的文件复制，然后粘贴到聊天窗口，再点击发送超链接，确认发送文件</li>
+<li><p>spring-aop是Spring的另一个核心模块，是Aop主要的实现模块。是以JVM的动态代理技术为基础，然后设计出了一系列的Aop横切实现，比如前置通知、返回通知、异常通知等，同时，Pointcut接口来匹配切入点，可以使用现有的切入点来设计横切面，也可以扩展相关方法根据需求进行切入。</p>
+</li>
+<li><p>spring-aspects模块集成AspectJ框架，为AOP提供具体的实现方法。</p>
+</li>
 </ul>
-<ol>
-<li>消息群发</li>
-</ol>
+<h3 id="（三）数据访问"><a href="#（三）数据访问" class="headerlink" title="（三）数据访问"></a><a name="t3"></a>（三）数据访问</h3><p>数据访问主要是由spring-jdbc，spring-tx，spring-orm组成。</p>
 <ul>
-<li>在Smart视图中，点击Broadcast工具图标（就是那个发射塔的图标），输入内容并选择要发送的好友，群及讨论群，再点击确定</li>
+<li><p>spring-jdbc模块是Spring 提供的JDBC抽象框架的主要实现模块，用于简化Spring JDBC。</p>
+</li>
+<li><p>spring-tx模块是Spring JDBC事务控制实现模块</p>
+</li>
+<li><p>spring-orm模块是ORM框架支持模块，主要集成 <a href="http://lib.csdn.net/base/javaee" title="Java EE知识库" target="_blank" rel="noopener">hibernate</a>, <a href="http://lib.csdn.net/base/java" title="Java 知识库" target="_blank" rel="noopener">Java</a> Persistence API (JPA) 和 <a href="http://lib.csdn.net/base/java" title="Java 知识库" target="_blank" rel="noopener">java</a> Data Objects (JDO) 用于资源管理、数据访问对象(DAO)的实现和事务策略。</p>
+</li>
 </ul>
-<ol>
-<li>代码评审（未来接入Gerrit）</li>
-</ol>
+<h3 id="（三）WEB"><a href="#（三）WEB" class="headerlink" title="（三）WEB"></a><a name="t4"></a>（三）WEB</h3><p>WEB主要是由spring-web，spring-webmvc组成。</p>
 <ul>
-<li>在编辑器中右键菜单中点击<code>Code Review</code>，输入对代码的评审注释，选择发送的对象，点击确定发送</li>
-<li>对方接收到代码评审消息，点击代码位置，直接跳转到本地相同的代码位置，然后修改吧。</li>
+<li><p>spring-web模块为Spring提供了最基础Web支持，主要建立于核心容器之上，通过Servlet或者Listeners来初始化IoC容器，也包含一些与Web相关的支持。</p>
+</li>
+<li><p>spring-webmvc模块众所周知是一个的Web-Servlet模块，实现了Spring MVC（model-view-controller）的Web应用。</p>
+</li>
 </ul>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a><a href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"></a>快捷键</h2><p>注：在eclipse中，CR表示Enter键</p>
-<ul>
-<li>激活输入，默认CR，在console下面打开一个小窗口进行输入</li>
-<li>发送，默认CR (Enter键)，发送消息</li>
-<li>上/下一个聊天, 默认左/右箭头，也可以在console工具栏使用鼠标切换</li>
-<li>隐藏聊天，默认Alt + M，隐藏Contact视图，清空当前聊天内容</li>
-<li>关闭聊天，默认Alt + C，关闭Contact视图和所有的聊天窗口</li>
-<li>退出输入，默认ESC</li>
-</ul>
-<p>注：快捷键有可能与eclipse中的热键冲突，请点击？打开首选项重新设置</p>
-<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a><a href="#%E6%84%9F%E8%B0%A2"></a>感谢</h2><p>SmartQQ Java API: <a href="https://github.com/ScienJus/smartqq" target="_blank" rel="noopener">https://github.com/ScienJus/smartqq</a></p>
-<h2 id="问题提交"><a href="#问题提交" class="headerlink" title="问题提交"></a><a href="#%E9%97%AE%E9%A2%98%E6%8F%90%E4%BA%A4"></a>问题提交</h2><p>任何问题包括建议均可以在<a href="https://github.com/Jamling/SmartQQ4Eclipse/issues" target="_blank" rel="noopener">Issue</a>中提交</p>
-<p>如果为Issue，建议带上eclipse版本及本插件版本信息（可以在Preference-&gt;SmartQQ中查看并复制版本信息）</p>
-<p>项目地址：<a href="https://gitee.com/xgg_511/SmartQQ4Eclipse" target="_blank" rel="noopener">点击进入</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a name="t5"></a>总结</h2><p>Spring主要分为核心组件和外部组件两大部分，其中核心组件又可以分为IOC和AOP两部分。因此，spring的源码阅读可以分为三个路线：IOC，AOP，外部组件。</p>
 
       
 
@@ -329,11 +258,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分享</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
         		</li>
       		
 		</ul>
@@ -389,7 +318,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://123xiao.github.io/blog/2017/09/29/Eclipse上的SmartQQ插件，防Boss利器/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://123xiao.github.io/blog/2017/09/01/Spring_1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -403,18 +332,18 @@
   
 <nav id="article-nav">
   
-    <a href="/blog/2017/10/17/阿里巴巴Java开发规约插件-体验/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/2017/09/06/Division/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          阿里巴巴Java开发规约插件-体验
+          Java中字符串按照“|”分割
         
       </div>
     </a>
   
   
-    <a href="/blog/2017/09/22/Chrome插件开发-网页中运行自己的JS/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Chrome插件开发-网页中运行自己的JS</div>
+    <a href="/blog/2017/09/01/Framework/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">从0开始搭建坚不可摧的Web系统主流架构</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -453,7 +382,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://123xiao.github.io/blog/blog/2017/09/29/Eclipse上的SmartQQ插件，防Boss利器/",
+  id: "https://123xiao.github.io/blog/blog/2017/09/01/Spring_1/",
   owner: '123xiao',
   repo: '123xiao.github.io',
   oauth: {
@@ -556,15 +485,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">干货</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分享</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Web架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,7 +505,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web架构</a>
+                <a href="javascript:void(0)" class="js-tag color3">干货</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,6 +562,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="https://www.oschina.net/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>开源中国</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://billts.site/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农BTS</a>
             </li>
           
         </ul>

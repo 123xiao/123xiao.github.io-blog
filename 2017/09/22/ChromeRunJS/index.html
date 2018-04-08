@@ -6,27 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://123xiao.github.io/blog">
-  <title>2017，站在巨人肩膀我们一路前行 | 无名键客</title>
+  <title>Chrome插件开发-网页中运行自己的JS | 无名键客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言2016年已经过去，2017年过去一半了。2017年似乎还有好多的事情只能等到2018年来完成，写一本书，讲讲课，在新的技术的路上一路前行..2018似乎我给自己的规划是蛮好的。不过此刻我想给大家列一些6逼的技术资料，2018我们一起学习。一个人不可能一下子成功，更不可能一步登天，所有成功与荣耀的背后是无尽的心酸。">
-<meta name="keywords" content="干货,分享,随笔">
+  <meta name="description" content="近几日老大让我接手一个很久之前他开发的一个Chrome插件，当时很好奇研究了一下怎么在浏览器中运行自己的JS。发现原来可以通过Chrome的扩展程序可以实现，废话就不多说了直接上dome代码。。。">
+<meta name="keywords" content="分享,随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2017，站在巨人肩膀我们一路前行">
-<meta property="og:url" content="https://123xiao.github.io/blog/2017/08/31/2017，站在巨人肩膀我们一路前行/index.html">
+<meta property="og:title" content="Chrome插件开发-网页中运行自己的JS">
+<meta property="og:url" content="https://123xiao.github.io/blog/2017/09/22/ChromeRunJS/index.html">
 <meta property="og:site_name" content="无名键客">
-<meta property="og:description" content="前言2016年已经过去，2017年过去一半了。2017年似乎还有好多的事情只能等到2018年来完成，写一本书，讲讲课，在新的技术的路上一路前行..2018似乎我给自己的规划是蛮好的。不过此刻我想给大家列一些6逼的技术资料，2018我们一起学习。一个人不可能一下子成功，更不可能一步登天，所有成功与荣耀的背后是无尽的心酸。">
+<meta property="og:description" content="近几日老大让我接手一个很久之前他开发的一个Chrome插件，当时很好奇研究了一下怎么在浏览器中运行自己的JS。发现原来可以通过Chrome的扩展程序可以实现，废话就不多说了直接上dome代码。。。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://file06.16sucai.com/2016/0513/d742d79fefc290407be117c17a2ce834.jpg">
-<meta property="og:updated_time" content="2018-04-08T10:58:16.136Z">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1fjsj3pik4gj30gp0d1dii.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fjsj5xg9bjj30oo0393ym.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tly1fjsj6rtru2j304m02rmx0.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/0060lm7Tly1fjsj86rw74j31200gtaco.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1fjsj8yaj68j30yj0gu76m.jpg">
+<meta property="og:image" content="http://img.blog.csdn.net/20160917134237769">
+<meta property="og:updated_time" content="2018-04-08T02:46:32.465Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2017，站在巨人肩膀我们一路前行">
-<meta name="twitter:description" content="前言2016年已经过去，2017年过去一半了。2017年似乎还有好多的事情只能等到2018年来完成，写一本书，讲讲课，在新的技术的路上一路前行..2018似乎我给自己的规划是蛮好的。不过此刻我想给大家列一些6逼的技术资料，2018我们一起学习。一个人不可能一下子成功，更不可能一步登天，所有成功与荣耀的背后是无尽的心酸。">
-<meta name="twitter:image" content="http://file06.16sucai.com/2016/0513/d742d79fefc290407be117c17a2ce834.jpg">
+<meta name="twitter:title" content="Chrome插件开发-网页中运行自己的JS">
+<meta name="twitter:description" content="近几日老大让我接手一个很久之前他开发的一个Chrome插件，当时很好奇研究了一下怎么在浏览器中运行自己的JS。发现原来可以通过Chrome的扩展程序可以实现，废话就不多说了直接上dome代码。。。">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/0060lm7Tly1fjsj3pik4gj30gp0d1dii.jpg">
   
     <link rel="alternative" href="/atom.xml" title="无名键客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/blog/assets/blogImg/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/blog/./main.0cf68a.css">
   <style type="text/css">
@@ -153,73 +158,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2017，站在巨人肩膀我们一路前行" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ChromeRunJS" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      2017，站在巨人肩膀我们一路前行
+      Chrome插件开发-网页中运行自己的JS
     </h1>
   
 
         
-        <a href="/blog/2017/08/31/2017，站在巨人肩膀我们一路前行/" class="archive-article-date">
-  	<time datetime="2017-08-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
+        <a href="/blog/2017/09/22/ChromeRunJS/" class="archive-article-date">
+  	<time datetime="2017-09-22T10:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2016年已经过去，2017年过去一半了。2017年似乎还有好多的事情只能等到2018年来完成，写一本书，讲讲课，在新的技术的路上一路前行..2018似乎我给自己的规划是蛮好的。不过此刻我想给大家列一些6逼的技术资料，2018我们一起学习。<br>一个人不可能一下子成功，更不可能一步登天，所有成功与荣耀的背后是无尽的心酸。</p>
-<p><img src="http://file06.16sucai.com/2016/0513/d742d79fefc290407be117c17a2ce834.jpg" alt=""></p>
-<a id="more"></a>
-<h1 id="技术网站"><a href="#技术网站" class="headerlink" title="技术网站"></a><a name="t1"></a>技术网站</h1><p>腾讯Web前端团队：<a href="http://www.alloyteam.com/" target="_blank" rel="noopener">http://www.alloyteam.com/</a><br>阿里中间件团队博客: 地址：<a href="http://jm.taobao.org/" target="_blank" rel="noopener">http://jm.taobao.org/</a><br>淘宝前端团队：地址：<a href="http://www.taobaofed.org/" target="_blank" rel="noopener">http://www.taobaofed.org/</a><br>美团技术团队博客： 地址： <a href="http://tech.meituan.com/" target="_blank" rel="noopener">http://tech.meituan.com/</a><br>腾讯社交用户体验设计(ISUX) 地址：<a href="http://isux.tencent.com/" target="_blank" rel="noopener">http://isux.tencent.com/</a><br>京东设计中心 地址：<a href="http://jdc.jd.com/" target="_blank" rel="noopener">http://jdc.jd.com</a><br>QQ游戏设计中心 地址：<a href="http://gdc.qq.com/" target="_blank" rel="noopener">http://gdc.qq.com</a><br>百度搜索用户体验中心 地址：<a href="http://ued.baidu.com/" target="_blank" rel="noopener">http://ued.baidu.com/</a><br>一淘UX 地址：<a href="http://ux.etao.com/" target="_blank" rel="noopener">http://ux.etao.com</a><br>腾讯CDC 地址：<a href="http://cdc.tencent.com/" target="_blank" rel="noopener">http://cdc.tencent.com</a><br>腾讯ISUX 地址：<a href="http://isux.tencent.com/" target="_blank" rel="noopener">http://isux.tencent.com</a><br>腾讯MXD移动互联网设计中心 地址：<a href="http://mxd.tencent.com/" target="_blank" rel="noopener">http://mxd.tencent.com</a><br>UXDC 2011体验设计峰会 地址：<a href="http://www.uxdc.org/" target="_blank" rel="noopener">http://www.uxdc.org</a><br>视觉同盟 地址：<a href="http://www.visionunion.com/" target="_blank" rel="noopener">http://www.visionunion.com</a><br>Tencent TG ideas 地址：<a href="http://tgideas.qq.com/" target="_blank" rel="noopener">http://tgideas.qq.com</a><br>Tencent AlloyTeam 地址：<a href="http://www.alloyteam.com/" target="_blank" rel="noopener">http://www.alloyteam.com</a><br>QQ客户端团队博客 地址：<a href="http://impd.tencent.com/" target="_blank" rel="noopener">http://impd.tencent.com/</a><br>阿里巴巴（中文站）UED 地址：<a href="http://www.aliued.cn/" target="_blank" rel="noopener">http://www.aliued.cn</a><br>支付宝官方Blog 地址：<a href="http://blog.alipay.com/" target="_blank" rel="noopener">http://blog.alipay.com</a><br>Taobao UED 地址：<a href="http://ued.taobao.com/blog/" target="_blank" rel="noopener">http://ued.taobao.com/blog/</a><br>阿里巴巴国际站UED 地址：<a href="http://www.aliued.com/" target="_blank" rel="noopener">http://www.aliued.com</a><br>百度MUX 地址：<a href="http://mux.baidu.com/" target="_blank" rel="noopener">http://mux.baidu.com</a><br>微博UDC 地址：<a href="http://udc.weibo.com/" target="_blank" rel="noopener">http://udc.weibo.com</a><br>搜狗UED 地址：<a href="http://ued.sogou.com/" target="_blank" rel="noopener">http://ued.sogou.com</a><br>搜狐MUED 地址：<a href="http://mued.sohu.com/" target="_blank" rel="noopener">http://mued.sohu.com</a><br>搜狐畅游VC 地址：<a href="http://vc.changyou.com/index.shtml" target="_blank" rel="noopener">http://vc.changyou.com/index.shtml</a><br>网易用户体验设计中心 地址：<a href="http://uedc.163.com/" target="_blank" rel="noopener">http://uedc.163.com/</a></p>
-<h2 id="淘宝技术团队对外技术博客网站"><a href="#淘宝技术团队对外技术博客网站" class="headerlink" title="淘宝技术团队对外技术博客网站"></a><a name="t2"></a>淘宝技术团队对外技术博客网站</h2><p><a href="http://lib.csdn.net/base/softwaretest" title="软件测试知识库" target="_blank" rel="noopener">测试</a>团队：<a href="http://www.taobaotesting.com/" target="_blank" rel="noopener">http://www.taobaotesting.com/</a><br>淘宝UED团队：<a href="http://ued.taobao.org/blog/" target="_blank" rel="noopener">http://ued.taobao.org/blog/</a><br>阿里妈妈UED团队：<a href="http://ued.alimama.com/" target="_blank" rel="noopener">http://ued.alimama.com/</a><br>阿里数据平台：<a href="http://www.alidata.org/archives" target="_blank" rel="noopener">http://www.alidata.org/archives</a><br>阿里巴巴<a href="http://lib.csdn.net/base/mysql" title="MySQL知识库" target="_blank" rel="noopener">数据库</a>团队：<a href="http://www.taobaodba.com/" target="_blank" rel="noopener">http://www.taobaodba.com/</a><br>阿里中间件团队：<a href="http://jm.taobao.org/" target="_blank" rel="noopener">http://jm.taobao.org/</a></p>
-<h2 id="基础充电"><a href="#基础充电" class="headerlink" title="基础充电"></a><a name="t3"></a>基础充电</h2><p>JDBC 3.0 有什么新特性<br><a href="http://www.ibm.com/developerworks/cn/java/j-jdbcnew/" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/java/j-jdbcnew/</a></p>
-<p>Servlet 3.0 实战：异步 Servlet 与 Comet 风格应用程序 IBM<br><a href="http://www.ibm.com/developerworks/cn/java/j-lo-comet/index.html" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/java/j-lo-comet/index.html</a></p>
-<p>JSP/Servlet 中的汉字编码问题 IBM<br><a href="http://www.ibm.com/developerworks/cn/java/jsp_dbcsz/index.html" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/java/jsp_dbcsz/index.html</a></p>
-<p><a href="http://lib.csdn.net/base/javascript" title="JavaScript知识库" target="_blank" rel="noopener">JavaScript</a> 中的函数式编程实践 IBM<br><a href="http://www.ibm.com/developerworks/cn/web/1006_qiujt_jsfunctional/index.html" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/web/1006_qiujt_jsfunctional/index.html</a></p>
-<p>web.xml 中的listener、 filter、servlet 加载顺序及其详解1<br><a href="http://apps.hi.baidu.com/share/detail/33614288" target="_blank" rel="noopener">http://apps.hi.baidu.com/share/detail/33614288</a></p>
-<h2 id="优秀的技术文章"><a href="#优秀的技术文章" class="headerlink" title="优秀的技术文章"></a><a name="t4"></a>优秀的技术文章</h2><p>MINA,xSocket同样的性能缺陷及陷阱,Grizzly better<br><a href="http://www.blogjava.net/adapterofcoms/articles/314560.html" target="_blank" rel="noopener">http://www.blogjava.net/adapterofcoms/articles/314560.html</a></p>
-<p><a href="http://lib.csdn.net/base/javase" title="Java SE知识库" target="_blank" rel="noopener">Java</a>连接池评估报告<br><a href="http://duzc2.iteye.com/blog/pdf" target="_blank" rel="noopener">http://duzc2.iteye.com/blog/pdf</a></p>
-<p>mina vs. yanf4j 性能比较—庄周梦蝶<br><a href="http://www.blogjava.net/killme2008/archive/2009/06/26/284342.html" target="_blank" rel="noopener">http://www.blogjava.net/killme2008/archive/2009/06/26/284342.html</a></p>
-<p>Grizzly和Netty以及Mina简单性能对比—阿里梁飞<br><a href="http://javatar.iteye.com/blog/1126171" target="_blank" rel="noopener">http://javatar.iteye.com/blog/1126171</a></p>
-<p>HTTPS的七个误解<br><a href="http://ijavagos.iteye.com/blog/916029" target="_blank" rel="noopener">http://ijavagos.iteye.com/blog/916029</a></p>
-<p>动态代理方案性能对比—阿里梁飞<br><a href="http://javatar.iteye.com/blog/814426" target="_blank" rel="noopener">http://javatar.iteye.com/blog/814426</a></p>
-<h2 id="后台框架"><a href="#后台框架" class="headerlink" title="后台框架"></a><a name="t5"></a>后台框架</h2><p>iteye中关于shiro的博客列表<br><a href="http://www.iteye.com/blogs/tag/shiro" target="_blank" rel="noopener">http://www.iteye.com/blogs/tag/shiro</a></p>
-<p>让Apache Shiro保护你的应用<br><a href="http://www.infoq.com/cn/articles/apache-shiro" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/apache-shiro</a></p>
-<p>将 Shiro 作为应用的权限基础<br><a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-shiro/" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/opensource/os-cn-shiro/</a></p>
-<p><a href="http://lib.csdn.net/base/javaee" title="Java EE知识库" target="_blank" rel="noopener">spring</a> 3.x企业实用开发实战<br><a href="http://www.iteye.com/blogs/subjects/Spring_3" target="_blank" rel="noopener">http://www.iteye.com/blogs/subjects/Spring_3</a> .</p>
-<p>Hibernate4实战最佳实践<br><a href="http://jenmhdn.iteye.com/blog/1627262" target="_blank" rel="noopener">http://jenmhdn.iteye.com/blog/1627262</a></p>
-<p>加速你的<a href="http://lib.csdn.net/base/javaee" title="Java EE知识库" target="_blank" rel="noopener">hibernate</a>引擎（上）(InfoQ)<br><a href="http://www.infoq.com/cn/articles/hibernate_tuning" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/hibernate_tuning</a></p>
-<p>加速你的Hibernate引擎（下）(InfoQ)<br><a href="http://www.infoq.com/cn/articles/hibernate_tuning-ii" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/hibernate_tuning-ii</a></p>
-<p>JdbcTemplate学习笔记<br><a href="http://www.iteye.com/topic/53526" target="_blank" rel="noopener">http://www.iteye.com/topic/53526</a></p>
-<p>Spring 事务管理高级应用难点剖析: 第 1 部分<br><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-ts1/index.html?ca=drs" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/java/j-lo-spring-ts1/index.html?ca=drs</a></p>
-<p>Spring 事务管理高级应用难点剖析: 第 2 部分<br><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-ts2/index.html?ca=dat-cn-0325" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/java/j-lo-spring-ts2/index.html?ca=dat-cn-0325</a></p>
-<p>Spring 事务管理高级应用难点剖析: 第 3 部分<br><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-ts3/index.html?ca=drs" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/java/j-lo-spring-ts3/index.html?ca=drs</a></p>
-<p>Spring 让 LOB 数据操作变得简单易行<br><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-lob/index.html?ca=drs-cn" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/java/j-lo-spring-lob/index.html?ca=drs-cn</a></p>
-<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a><a name="t6"></a>开发工具</h2><p>Apache Commons工具集简介<br><a href="http://www.cnblogs.com/jackyrong/archive/2006/10/15/529599.html" target="_blank" rel="noopener">http://www.cnblogs.com/jackyrong/archive/2006/10/15/529599.html</a></p>
-<p>spring里的工具类,摘自spring3.0.5版本<br><a href="http://wen66.iteye.com/blog/830719" target="_blank" rel="noopener">http://wen66.iteye.com/blog/830719</a></p>
-<p>IE浏览器下同一网页多图片显示的瓶颈与优化[原创]<br><a href="http://blog.s135.com/post/332/" target="_blank" rel="noopener">http://blog.s135.com/post/332/</a></p>
-<p>MAC下安装与配置<a href="http://lib.csdn.net/base/mysql" title="MySQL知识库" target="_blank" rel="noopener">MySQL</a><br><a href="http://www.cnblogs.com/macro-cheng/archive/2011/10/25/mysql-001.html" target="_blank" rel="noopener">http://www.cnblogs.com/macro-cheng/archive/2011/10/25/mysql-001.html</a></p>
-<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a><a name="t7"></a>架构</h2><p>人人网<a href="http://lib.csdn.net/base/android" title="Android知识库" target="_blank" rel="noopener">移动开发</a><a href="http://lib.csdn.net/base/architecture" title="大型网站架构知识库" target="_blank" rel="noopener">架构</a><br><a href="http://www.infoq.com/cn/articles/renren-mobile-arch" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/renren-mobile-arch</a></p>
-<p>2010年InfoQ中文站高性能架构内容回顾：在路上<br><a href="http://www.infoq.com/cn/news/2011/01/infoq-2010-high-performance-sum" target="_blank" rel="noopener">http://www.infoq.com/cn/news/2011/01/infoq-2010-high-performance-sum</a></p>
-<p>百万级访问量网站的技术准备工作 (InfoQ)<br><a href="http://www.infoq.com/cn/articles/lzy-million-visits-site-technical-preparations" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/lzy-million-visits-site-technical-preparations</a></p>
-<p>Java深度历险（一）——Java字节代码的操纵 (InfoQ)<br><a href="http://www.infoq.com/cn/articles/cf-java-byte-code" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/cf-java-byte-code</a></p>
-<p>又拍网的网站技术架构<br><a href="http://www.dbanotes.net/arch/yupoo_arch.html" target="_blank" rel="noopener">http://www.dbanotes.net/arch/yupoo_arch.html</a></p>
-<p>又拍网架构中的分库设计<br><a href="http://www.infoq.com/cn/articles/yupoo-partition-database" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/yupoo-partition-database</a></p>
-<p>豆瓣网技术架构变迁<br><a href="http://www.infoq.com/cn/presentations/hongqn-douban" target="_blank" rel="noopener">http://www.infoq.com/cn/presentations/hongqn-douban</a></p>
-<p>豆瓣网架构-国内<a href="http://lib.csdn.net/base/python" title="Python知识库" target="_blank" rel="noopener">Python</a>语言网站的王者之路<br><a href="http://www.bopor.com/?p=661" target="_blank" rel="noopener">http://www.bopor.com/?p=661</a></p>
-<p><a href="http://lib.csdn.net/base/architecture" title="大型网站架构知识库" target="_blank" rel="noopener">大型网站架构</a>演变和知识体系<br><a href="http://www.blogjava.net/BlueDavy/archive/2008/09/03/226749.html" target="_blank" rel="noopener">http://www.blogjava.net/BlueDavy/archive/2008/09/03/226749.html</a></p>
-<p>JSON 入门指南 (廖 雪峰 , 撰稿人) IBM<br><a href="http://www.ibm.com/developerworks/cn/web/wa-lo-json/" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/web/wa-lo-json/</a></p>
-<p>网站架构收集(csdn)<br><a href="http://blog.csdn.net/Damon_King/archive/2008/06/06/2517554.aspx" target="_blank" rel="noopener">http://blog.csdn.net/Damon_King/archive/2008/06/06/2517554.aspx</a></p>
-<p>Spring操作blob和clob<br><a href="http://hi.baidu.com/sunjoe/blog/item/10251a33ae4871fd1a4cff33.html" target="_blank" rel="noopener">http://hi.baidu.com/sunjoe/blog/item/10251a33ae4871fd1a4cff33.html</a></p>
-<p>调查：您的开发团队用什么项目管理软件<br><a href="http://www.cnblogs.com/cmt/archive/2011/01/10/1931861.html" target="_blank" rel="noopener">http://www.cnblogs.com/cmt/archive/2011/01/10/1931861.html</a></p>
-<p>企业服务总线解决方案剖析，第 1 部分: 企业服务总线的基本概念<br><a href="http://www.ibm.com/developerworks/cn/webservices/ws-esb1/" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/webservices/ws-esb1/</a></p>
-<p>最后还有我喜欢的<a href="http://lib.csdn.net/base/datastructure" title="算法与数据结构知识库" target="_blank" rel="noopener">算法与数据结构</a>，以及互联网杂谈，这些我都会放在我的csdn和我的云栖博客里面，2017让我们一路前行！</p>
+        <p>近几日老大让我接手一个很久之前他开发的一个Chrome插件，当时很好奇研究了一下怎么在浏览器中运行自己的JS。发现原来可以通过Chrome的扩展程序可以实现，废话就不多说了直接上dome代码。。。<br><a id="more"></a></p>
+<p>新建一个manifest.json的文件（扩展程序的配置文件）该文件字符集格式必须为UTF-8</p>
+<p>manifest.json代码</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"无名键客"</span>,</span><br><span class="line">  <span class="attr">"manifest_version"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">"第一个Chrome插件~~！"</span>,</span><br><span class="line">  <span class="attr">"browser_action"</span>: &#123;</span><br><span class="line">    <span class="attr">"default_icon"</span>: <span class="string">"1.png"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"content_scripts"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"matches"</span>: [<span class="string">"https://github.com/*"</span>],</span><br><span class="line">      <span class="attr">"js"</span>: [<span class="string">"script.js"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>default_icon ： 插件图标<br>matches ： Content Script注入的Web页面<br>js : 注入到匹配的Web页面中的JS文件</p>
+<p>script.js代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="string">"Hello Github！！！"</span>);</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"user[login]"</span>).value=<span class="string">"xiaoguokang"</span>;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"user[email]"</span>).value=<span class="string">"1258183603@163.com"</span>;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"user[password]"</span>).value=<span class="string">"123456789"</span>;</span><br></pre></td></tr></table></figure>
+<p>OK现在Chrome扩展插件已经完成了 </p>
+<p>1、打开 Chrome菜单–&gt;更多工具–&gt;扩展程序<br><img src="http://ww3.sinaimg.cn/large/0060lm7Tly1fjsj3pik4gj30gp0d1dii.jpg" alt="enter description here"></p>
+<p> 2、点击 加载已解压的扩展程序<br> <img src="http://ww4.sinaimg.cn/large/0060lm7Tly1fjsj5xg9bjj30oo0393ym.jpg" alt="enter description here"></p>
+<p> 3、可以看到程序已经安装成功<br><img src="http://ww1.sinaimg.cn/large/0060lm7Tly1fjsj6rtru2j304m02rmx0.jpg" alt="enter description here"></p>
+<p>然后打开github的时候–&gt;Hello Github!!!</p>
+<p><img src="http://ww4.sinaimg.cn/large/0060lm7Tly1fjsj86rw74j31200gtaco.jpg" alt="enter description here"></p>
+<p>点击确定后</p>
+<p><img src="http://ww3.sinaimg.cn/large/0060lm7Tly1fjsj8yaj68j30yj0gu76m.jpg" alt="enter description here"></p>
+<p>有没有发现用户名、邮箱、密码都填上了<br><img src="http://img.blog.csdn.net/20160917134237769" alt="enter description here"></p>
+<p>OK现在已经完成了~~~</p>
 
       
 
@@ -263,10 +238,6 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">干货</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分享</a>
         		</li>
@@ -328,7 +299,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://123xiao.github.io/blog/2017/08/31/2017，站在巨人肩膀我们一路前行/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://123xiao.github.io/blog/2017/09/22/ChromeRunJS/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -342,18 +313,18 @@
   
 <nav id="article-nav">
   
-    <a href="/blog/2017/09/01/从0开始搭建坚不可摧的Web系统主流架构/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/2017/09/29/SmartQQ/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          从0开始搭建坚不可摧的Web系统主流架构
+          Eclipse上的SmartQQ插件，防Boss利器
         
       </div>
     </a>
   
   
-    <a href="/blog/2017/08/18/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/blog/2017/09/14/leave/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">致永远离开我们的一位程序员</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -392,7 +363,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://123xiao.github.io/blog/blog/2017/08/31/2017，站在巨人肩膀我们一路前行/",
+  id: "https://123xiao.github.io/blog/blog/2017/09/22/ChromeRunJS/",
   owner: '123xiao',
   repo: '123xiao.github.io',
   oauth: {
@@ -495,15 +466,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">干货</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分享</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Web架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -515,7 +486,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web架构</a>
+                <a href="javascript:void(0)" class="js-tag color3">干货</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,6 +543,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="https://www.oschina.net/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>开源中国</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://billts.site/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>码农BTS</a>
             </li>
           
         </ul>
